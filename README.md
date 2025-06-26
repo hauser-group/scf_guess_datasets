@@ -13,9 +13,9 @@ calculations.
 ## How to use
 
 ```python
-from scf_guess_datasets import QM9Isomeres
+from scf_guess_datasets import Qm9Isomeres
 
-dataset = QM9Isomeres(
+dataset = Qm9Isomeres(
     "/home/bob/datasets", # data stored in /home/bob/datasets/qm9_isomeres
     size=10, # number of molecules (optional, just for testing)
     split_ratio=0.5, # train/val split (optional, just for testing)

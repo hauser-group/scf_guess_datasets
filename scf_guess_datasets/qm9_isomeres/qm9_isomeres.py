@@ -4,7 +4,7 @@ from pathlib import Path
 from pyscf.gto import Mole, M
 
 
-class QM9Isomeres(Dataset):
+class Qm9Isomeres(Dataset):
     def __init__(
         self, data_directory: str, size: int = 500, split_ratio: float = 0.8
     ) -> None:

@@ -1,1 +1,1 @@
-from .qm9_isomeres import QM9Isomeres
+from .qm9_isomeres import Qm9Isomeres

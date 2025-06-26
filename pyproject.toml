@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=66.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scf_guess_datasets"
+version = "0.0.0"
+description = "SCF Guess Datasets"
+dependencies = [
+    "pyscf",
+    "numpy"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]

@@ -6,9 +6,13 @@ from pyscf.gto import Mole, M
 
 class Qm9Isomeres(Dataset):
     def __init__(
-        self, data_directory: str, size: int = 500, split_ratio: float = 0.8
+        self,
+        data_directory: str,
+        size: int = 500,
+        val: float = 0.15,
+        test: float = 0.15,
     ) -> None:
-        super().__init__(data_directory, "qm9_isomeres", None, size, split_ratio)
+        super().__init__(data_directory, "qm9_isomeres", None, size, val, test)
 
     @cached_property
     def schemes(self) -> list[str]:

@@ -9,7 +9,7 @@ from typing import Any
 from pyscf.gto import Mole
 from warnings import warn
 from pathlib import Path
-from math import floor
+from math import ceil
 
 import random
 import shutil
@@ -23,9 +23,14 @@ class Dataset(ABC):
         name: str,
         basis: str | None,
         size: int,
-        split_ratio: float,
+        val: float,
+        test: float,
     ) -> None:
-        self.name, self.size, self.split_ratio = name, size, split_ratio
+        self.name, self.size = name, size
+
+        self.val = ceil(self.size * val)
+        self.test = ceil(size * test)
+        self.train = size - self.val - self.test
 
         base = files(f"scf_guess_datasets.{name}")
         self.xyz = f"{base}/xyz"
@@ -35,12 +40,19 @@ class Dataset(ABC):
 
     @cached_property
     def names(self) -> list[str]:
-        names = sorted(xyz.stem for xyz in Path(self.xyz).glob("*.xyz"))
+        try:
+            with open(f"{self.data}/names.pkl", "rb") as f:
+                return pickle.load(f)
+        except FileNotFoundError:
+            names = sorted(xyz.stem for xyz in Path(self.xyz).glob("*.xyz"))
 
-        random.seed(0)
-        random.shuffle(names)
+            random.seed(0)
+            random.shuffle(names)
 
-        return names
+            with open(f"{self.data}/names.pkl", "wb") as f:
+                pickle.dump(names, f)
+
+            return names
 
     @cached_property
     def keys(self) -> list[int]:
@@ -54,13 +66,15 @@ class Dataset(ABC):
 
     @cached_property
     def train_keys(self) -> list[int]:
-        return self.keys[: floor(self.size * self.split_ratio)]
+        return self.keys[: self.train]
 
     @cached_property
     def val_keys(self) -> list[int]:
-        train = len(self.train_keys)
-        val = self.size - train
-        return self.keys[train : train + val]
+        return self.keys[self.train : self.train + self.val]
+
+    @cached_property
+    def test_keys(self) -> list[int]:
+        return self.keys[self.train + self.val : self.size]
 
     @cached_property
     @abstractmethod

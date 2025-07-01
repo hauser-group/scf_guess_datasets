@@ -18,7 +18,8 @@ from scf_guess_datasets import Qm9Isomeres
 dataset = Qm9Isomeres(
     "/home/bob/datasets", # data stored in /home/bob/datasets/qm9_isomeres
     size=10, # number of molecules (optional, just for testing)
-    split_ratio=0.5, # train/val split (optional, just for testing)
+    val=0.1, # fraction of validation samples (optional, just for testing)
+    test=0.1 # fraction of test samples (optional, just for testing)
 )
 
 dataset.build() # just once, omit if /home/bob/datasets/qm9_isomeres exists

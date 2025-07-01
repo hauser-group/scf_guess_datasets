@@ -2,3 +2,4 @@
 *.egg-info
 *.npy
 *.pkl
+__pycache__

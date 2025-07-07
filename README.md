@@ -5,6 +5,14 @@ Each dataset represents a set of randomly selected molecules from an original
 collection of xyz files, augmented with tensor quantities obtained via DFT
 calculations.
 
+## Datasets
+
+For a description of each dataset see [quantum-machine.org](http://quantum-machine.org/datasets/).
+
+- [Qm9](http://figshare.com/collections/Quantum_chemistry_structures_and_properties_of_134_kilo_molecules/978904) 134k small organic molecules of CHONF. Molecules are non-charged and closed-shell. Calculated at B3LYP/6-31G(2df,p) level.
+- [Qm9Isomeres](http://figshare.com/collections/Quantum_chemistry_structures_and_properties_of_134_kilo_molecules/978904) 6k constitutional isomeres from C7H10O2 taken from Qm9. Calculated at B3LYP/6-31G(2df,p) level.
+- [Qm9IsomeresMd](http://quantum-machine.org/data/c7o2h10_md.tar.gz) Molecular trajectories of 113 molecules at 500 K randomly selected from Qm9 Isomeres. Calculated at the B3LYP/6-31G(2df,p) level.
+
 ## Installation
 
 - Clone this repository to `scf_guess_datasets`

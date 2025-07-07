@@ -9,8 +9,8 @@ class Qm9Isomeres(Dataset):
         self,
         data_directory: str,
         size: int = 500,
-        val: float = 0.15,
-        test: float = 0.15,
+        val: float = 0.1,
+        test: float = 0.1,
     ) -> None:
         super().__init__(data_directory, "qm9_isomeres", None, size, val, test)
 

@@ -3,3 +3,5 @@
 *.npy
 *.pkl
 __pycache__
+/build
+/test.py

@@ -57,7 +57,7 @@ class Dataset(ABC):
     @cached_property
     def keys(self) -> list[int]:
         with open(f"{self.data}/keys.pkl", "rb") as f:
-            return pickle.load(f)
+            return pickle.load(f)[:self.size]
 
     @cached_property
     @abstractmethod

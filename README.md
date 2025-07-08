@@ -32,7 +32,7 @@ dataset = Qm9Isomeres(
 
 dataset.build() # just once, omit if /home/bob/datasets/qm9_isomeres exists
 
-for key in dataset.train_keys:  # same for val_keys
+for key in dataset.train_keys:  # same for val_keys or train_keys
     sample = dataset.solution(key)  # dft result for that molecule
 
     print(sample.overlap)  # NDArray from PysCF

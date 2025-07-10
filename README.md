@@ -7,9 +7,9 @@ calculations.
 
 ## Datasets
 
-For a description of each dataset see [quantum-machine.org](http://quantum-machine.org/datasets/).
+For a description of each dataset see [quantum-machine.org](http://quantum-machine.org/datasets/). Attention: The used basis set file for 6-31G(2df,p) were modified.
 
-- [Qm9](http://figshare.com/collections/Quantum_chemistry_structures_and_properties_of_134_kilo_molecules/978904) 134k small organic molecules of CHONF. Molecules are non-charged and closed-shell. Calculated at B3LYP/6-31G(2df,p) level.
+- [Qm9](http://figshare.com/collections/Quantum_chemistry_structures_and_properties_of_134_kilo_molecules/978904) 134k small organic molecules of CHONF. Molecules are non-charged and closed-shell. The train/val/test sets are roughly stratified with respect to molecular size.Calculated at B3LYP/6-31G(2df,p) level.
 - [Qm9Isomeres](http://figshare.com/collections/Quantum_chemistry_structures_and_properties_of_134_kilo_molecules/978904) 6k constitutional isomeres from C7H10O2 taken from Qm9. Calculated at B3LYP/6-31G(2df,p) level.
 - [Qm9IsomeresMd](http://quantum-machine.org/data/c7o2h10_md.tar.gz) Molecular trajectories of 113 molecules at 500 K randomly selected from Qm9 Isomeres. Calculated at the B3LYP/6-31G(2df,p) level.
 
@@ -32,7 +32,7 @@ dataset = Qm9Isomeres(
 
 dataset.build() # just once, omit if /home/bob/datasets/qm9_isomeres exists
 
-for key in dataset.train_keys:  # same for val_keys or train_keys
+for key in dataset.train_keys:  # same for val_keys or test_keys
     sample = dataset.solution(key)  # dft result for that molecule
 
     print(sample.overlap)  # NDArray from PysCF

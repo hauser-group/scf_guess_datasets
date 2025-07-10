@@ -49,7 +49,7 @@ def build_guess(path: str, solver: Any, scheme: str):
     overlap = solver.get_ovlp()
     hcore = solver.get_hcore()
     density = solver.get_init_guess(key=scheme)
-    fock = solver.get_fock(dm=overlap)
+    fock = solver.get_fock(dm=density)
 
     _, _, _, _, status = solve(solver, density)
     Sample.save(path, overlap, hcore, density, fock, status)
